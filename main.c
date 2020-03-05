@@ -104,18 +104,4 @@ int main(void)
 
 
 
-void __irq HardFault_Handler()
-{
-	
-
-	//P10 GPIO Out
-	REG32(ADDR_GPIO_DATA) |= 0x100;
-	REG32(ADDR_IO2_CFG) &= 0xffffff00;
-	REG32(ADDR_GPIO_OEN) |= 0x100;	//GPIO  P10 OUT
-	while(1)
-	{
-		delay(30000);
-		REG32(ADDR_GPIO_DATA) ^= 0x100;
-	}
-}
 
